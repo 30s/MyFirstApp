@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.myapp.DisplayMessageActivity;
+import com.example.myapp.MyFirstFragmentActivity;
 
 
 public class MyFirstAppActivity extends Activity
@@ -26,6 +27,11 @@ public class MyFirstAppActivity extends Activity
 	EditText editText = (EditText)findViewById(R.id.edit_message);
 	String message = editText.getText().toString();
 	intent.putExtra(EXTRA_MESSAGE, message);
+	startActivity(intent);
+    }
+
+    public void openFragmentView(View view) {
+        Intent intent = new Intent(this, MyFirstFragmentActivity.class);
 	startActivity(intent);
     }
 }
