@@ -14,5 +14,6 @@
     </activity>
     <activity android:name="com.example.myapp.DisplayMessageActivity" />
     <activity android:name="com.example.myapp.MyFirstFragmentActivity" />
+    <activity android:name="com.example.myapp.DynamicFragmentActivity" />
   </application>
 </manifest>

@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.myapp.DisplayMessageActivity;
-import com.example.myapp.MyFirstFragmentActivity;
+// import com.example.myapp.MyFirstFragmentActivity;
+import com.example.myapp.DynamicFragmentActivity;
 
 
 public class MyFirstAppActivity extends Activity
@@ -31,7 +32,7 @@ public class MyFirstAppActivity extends Activity
     }
 
     public void openFragmentView(View view) {
-        Intent intent = new Intent(this, MyFirstFragmentActivity.class);
+        Intent intent = new Intent(this, DynamicFragmentActivity.class);
 	startActivity(intent);
     }
 }
