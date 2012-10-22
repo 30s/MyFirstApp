@@ -26,6 +26,19 @@ public class DynamicFragmentActivity extends FragmentActivity
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dynamic_fragment_activity);
+
+	Intent intent = getIntent();
+	Uri data = intent.getData();
+	if ( data != null ) {
+	    Log.d(TAG, data.toString());
+	} else {
+	    Log.d(TAG, "send data is null!");
+	}
+	if (intent.getType().indexOf("image/") != -1) {
+	    
+	} else if (intent.getType().equals("text/plain")) {
+	    
+	}
     }
 
     public void addFragment(View view) {
