@@ -1,10 +1,15 @@
 package com.example.myapp;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
+import java.util.List;
 
 import com.example.myapp.fragments.MyFirstFragment;
 
@@ -50,6 +55,24 @@ public class DynamicFragmentActivity extends FragmentActivity
 	transaction.addToBackStack(null);
 
 	transaction.commit();
+    }
+
+    public void openMap(View view) {
+	// z param is zoom level
+	Uri location = Uri.parse("geo:37.422219,-122.08364?z=14");
+	Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
+
+	PackageManager packageManager = getPackageManager();
+	List<ResolveInfo> activities = packageManager
+	    .queryIntentActivities(mapIntent, 0);	
+	boolean isIntentSafe = activities.size() > 0;
+
+	Log.d(TAG, "Map app: " + activities.size() + "");
+	if (isIntentSafe) {
+	    startActivity(mapIntent);
+	} else {
+	    Log.d(TAG, "No map app!")
+	}
     }
 
     public void onArticleSelected(String title) {
