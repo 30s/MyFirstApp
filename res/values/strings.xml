@@ -7,5 +7,6 @@
     <string name="btn_add">Add Fragment</string>
     <string name="btn_replace">Replace Fragment</string>
     <string name="btn_map">Open Map</string>
+    <string name="btn_get_contact">Get Contact</string>
     <string name="chooser_title">Open Map</string>
 </resources>
