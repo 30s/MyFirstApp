@@ -2,6 +2,7 @@ package com.example.myapp;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 
@@ -31,12 +32,24 @@ public class DynamicFragmentActivity extends FragmentActivity {
 
             MyFirstFragment firstFragment = new MyFirstFragment();
             firstFragment.setArguments(getIntent().getExtras());
-            getSupportFragmentManager().beginTransaction()
-		.add(R.id.fragment_container, firstFragment, "MyFirstFragment").commit();
+            getSupportFragmentManager()
+		.beginTransaction()
+		.add(R.id.fragment_container, firstFragment, "MyFirstFragment")
+		.commit();
 	}
     }
 
     public void replaceFragment(View view) {
 	Log.d(TAG, "replaceFragment");
+
+	MyFirstFragment newFragment = new MyFirstFragment();
+	FragmentTransaction transaction = getSupportFragmentManager()
+	    .beginTransaction();
+
+	transaction.replace(R.id.fragment_container, newFragment, 
+			    "MyFirstFragment");
+	transaction.addToBackStack(null);
+
+	transaction.commit();
     }
 }
