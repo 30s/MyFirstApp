@@ -8,7 +8,9 @@ import android.view.View;
 
 import com.example.myapp.fragments.MyFirstFragment;
 
-public class DynamicFragmentActivity extends FragmentActivity {
+public class DynamicFragmentActivity extends FragmentActivity 
+    implements MyFirstFragment.OnHeadlineSelectedListener {
+    
     public static final String TAG = "DynamicFragmentActivity";
     
     @Override
@@ -21,9 +23,6 @@ public class DynamicFragmentActivity extends FragmentActivity {
 	Log.d(TAG, "addFragment");
 	
         if (findViewById(R.id.fragment_container) != null) {
-            // if (savedInstanceState != null) {
-            //     return;
-            // }
 	    if ( getSupportFragmentManager()
 		 .findFragmentByTag("MyFirstFragment") != null) {
 		Log.d(TAG, "MyFirstFragment already exist!");
@@ -51,5 +50,21 @@ public class DynamicFragmentActivity extends FragmentActivity {
 	transaction.addToBackStack(null);
 
 	transaction.commit();
+    }
+
+    public void onArticleSelected(String title) {
+	Log.d(TAG, title);
+    }
+
+    /**
+     * This is for MyFirstFragment
+     */
+    public void callActivity(View view) { 
+	Log.d(TAG, "callActivity in DynamicFragmentActivity");
+	MyFirstFragment fragment = (MyFirstFragment)getSupportFragmentManager()
+	    .findFragmentByTag("MyFirstFragment");
+	if ( fragment != null) {
+	    fragment.callActivity(view);
+	}	
     }
 }
