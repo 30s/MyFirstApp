@@ -69,9 +69,11 @@ public class DynamicFragmentActivity extends FragmentActivity
 
 	Log.d(TAG, "Map app: " + activities.size() + "");
 	if (isIntentSafe) {
-	    startActivity(mapIntent);
+	    String title = (String)getResources().getText(R.string.chooser_title);
+	    Intent chooser = Intent.createChooser(mapIntent, title);
+	    startActivity(chooser);
 	} else {
-	    Log.d(TAG, "No map app!")
+	    Log.d(TAG, "No map app!");
 	}
     }
 
